@@ -1,25 +1,32 @@
 /**
  * Aura Dashboard - App Navbar Component
  * 
- * This component renders the top navigation bar with a sidebar toggle button
- * and an expandable search input. It features a glass-morphism effect and
- * includes a dropdown search results panel.
+ * This component renders the top navigation bar with a sidebar toggle button,
+ * an expandable search input, and a theme toggle switch. It features a 
+ * glass-morphism effect and includes a dropdown search results panel.
  * 
  * @component
  * @requires useSidebar - Hook from sidebar component for toggle functionality
+ * @requires useTheme - Hook from next-themes for theme management
  * @requires framer-motion - For search dropdown animations
- * @requires lucide-react - For icons (Search, SidebarIcon)
+ * @requires lucide-react - For icons (Search, SidebarIcon, Sun, Moon)
  */
 
-import { Search, SidebarIcon } from "lucide-react";
+import { Search, SidebarIcon, Sun, Moon } from "lucide-react";
 import { useState } from "react";
 import { useSidebar } from "@/components/ui/sidebar";
+import { useTheme } from "next-themes";
 import { motion, AnimatePresence } from "framer-motion";
 
 export function AppNavbar() {
   const [searchOpen, setSearchOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState("");
   const { toggleSidebar } = useSidebar();
+  const { theme, setTheme } = useTheme();
+
+  const toggleTheme = () => {
+    setTheme(theme === "dark" ? "light" : "dark");
+  };
 
   return (
     <header className="sticky top-0 z-30 glass border-b border-border/40">
@@ -65,6 +72,37 @@ export function AppNavbar() {
             )}
           </AnimatePresence>
         </div>
+
+        {/* Theme Toggle */}
+        <button
+          onClick={toggleTheme}
+          className="p-2 rounded-lg hover:bg-muted transition-colors relative overflow-hidden"
+          aria-label="Toggle theme"
+        >
+          <AnimatePresence mode="wait">
+            {theme === "dark" ? (
+              <motion.div
+                key="moon"
+                initial={{ rotate: -90, opacity: 0 }}
+                animate={{ rotate: 0, opacity: 1 }}
+                exit={{ rotate: 90, opacity: 0 }}
+                transition={{ duration: 0.2 }}
+              >
+                <Moon className="h-5 w-5 text-muted-foreground" />
+              </motion.div>
+            ) : (
+              <motion.div
+                key="sun"
+                initial={{ rotate: 90, opacity: 0 }}
+                animate={{ rotate: 0, opacity: 1 }}
+                exit={{ rotate: -90, opacity: 0 }}
+                transition={{ duration: 0.2 }}
+              >
+                <Sun className="h-5 w-5 text-muted-foreground" />
+              </motion.div>
+            )}
+          </AnimatePresence>
+        </button>
       </div>
     </header>
   );

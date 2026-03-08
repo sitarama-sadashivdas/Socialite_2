@@ -1,0 +1,267 @@
+================================================================================
+                    SOCIAL MEDIA DASHBOARD PROJECT
+                         Technical Documentation
+================================================================================
+
+Project Name: Aura Dashboard
+Version: 1.0.0
+Built With: React, TypeScript, Vite
+
+--------------------------------------------------------------------------------
+                              PROJECT OVERVIEW
+--------------------------------------------------------------------------------
+
+Aura Dashboard is a full-featured social media dashboard application built with
+modern web technologies. The application provides a comprehensive platform for
+social networking interactions, featuring real-time-like updates, responsive
+design, and an intuitive user interface.
+
+Key Capabilities:
+  • User profile management with customizable information
+  • Interactive post feed with like and comment functionality
+  • Comprehensive notifications system
+  • Real-time messaging interface
+  • Content discovery through explore features
+
+--------------------------------------------------------------------------------
+                           TECHNOLOGY STACK
+--------------------------------------------------------------------------------
+
+Frontend Framework:
+  • React 18.3.1 - Core UI library for component-based architecture
+  • TypeScript 5.8.3 - Type-safe JavaScript replacement (chosen over 
+    JavaScript during development for better type safety and developer 
+    experience while learning)
+
+Build Tools:
+  • Vite 5.4.19 - Next-generation frontend build tool
+  • ESLint 9.32.0 - Code linting for maintaining quality
+
+Styling & UI:
+  • Tailwind CSS 3.4.17 - Utility-first CSS framework
+  • Radix UI - Accessible component primitives
+  • Framer Motion 12.34.3 - Animation library
+  • Lucide React - Icon library
+  • Class Variance Authority - Component variant management
+  • Tailwind Merge & CLSX - Utility for merging Tailwind classes
+
+State Management & Data:
+  • TanStack React Query 5.83.0 - Server state management
+  • React Hook Form 7.61.1 - Form handling
+  • Zod 3.25.76 - Schema validation
+
+Routing:
+  • React Router DOM 6.30.1 - Client-side routing
+
+Additional Libraries:
+  • Recharts 2.15.4 - Charting library
+  • Embla Carousel - Touch-friendly carousel
+  • Date-fns 3.6.0 - Date manipulation
+  • Next Themes 0.3.0 - Theme management support
+
+Testing:
+  • Vitest 3.2.4 - Unit testing framework
+  • Testing Library React 16.0.0 - Component testing
+
+--------------------------------------------------------------------------------
+                           ARCHITECTURE
+--------------------------------------------------------------------------------
+
+Directory Structure:
+  src/
+  ├── components/
+  │   ├── feed/           # Feed-related components
+  │   │   ├── CommentSection.tsx
+  │   │   ├── CreatePost.tsx
+  │   │   ├── PostCard.tsx
+  │   │   └── RightSidebar.tsx
+  │   ├── layout/         # Layout components
+  │   │   ├── AppLayout.tsx
+  │   │   ├── AppNavbar.tsx
+  │   │   └── AppSidebar.tsx
+  │   └── ui/             # Reusable UI components (Radix-based)
+  │       ├── accordion.tsx
+  │       ├── alert-dialog.tsx
+  │       ├── avatar.tsx
+  │       ├── button.tsx
+  │       ├── card.tsx
+  │       ├── dialog.tsx
+  │       ├── dropdown-menu.tsx
+  │       └── [30+ more components]
+  ├── data/
+  │   └── mockData.ts     # Mock data for development
+  ├── hooks/
+  │   ├── use-mobile.tsx  # Mobile detection hook
+  │   └── use-toast.ts    # Toast notification hook
+  ├── lib/
+  │   └── utils.ts        # Utility functions
+  ├── pages/
+  │   ├── Feed.tsx        # Main feed page
+  │   ├── Explore.tsx     # Content discovery page
+  │   ├── Messages.tsx    # Messaging interface
+  │   ├── Notifications.tsx
+  │   ├── Profile.tsx     # User profile page
+  │   └── NotFound.tsx    # 404 error page
+  ├── test/
+  │   ├── example.test.ts
+  │   └── setup.ts
+  ├── App.tsx             # Root application component
+  ├── main.tsx            # Application entry point
+  └── index.css           # Global styles
+
+Component Architecture:
+  The application follows a modular component-based architecture where:
+  • UI components are built using Radix UI primitives
+  • Feature components encapsulate specific functionality
+  • Pages serve as route-level containers
+  • Layout components provide consistent structure
+
+--------------------------------------------------------------------------------
+                         CORE FEATURES
+--------------------------------------------------------------------------------
+
+1. User Profile Section
+   • Profile display with avatar, bio, and stats
+   • Edit profile functionality
+   • Posts, followers, and following counts
+   • Liked posts gallery
+   • Animated stat cards with gradient backgrounds
+
+2. Post Feed with Like/Comment Functionality
+   • Create new posts with text content
+   • Image support in posts
+   • Like/unlike posts with animated feedback
+   • Expandable comment sections
+   • Share and bookmark options
+   • Real-time-like updates with optimistic UI
+
+3. Notifications Panel
+   • Multiple notification types (likes, comments, follows, mentions)
+   • Unread notification indicators
+   • Animated notification entries
+   • Mark as read functionality
+
+4. Message System
+   • Conversation list with unread counts
+   • Real-time chat interface
+   • Message timestamps
+   • User avatars and status indicators
+
+5. Content Discovery (Explore)
+   • Trending topics display
+   • Suggested users to follow
+   • Search functionality in navbar
+
+6. Responsive Design
+   • Mobile-first approach
+   • Collapsible sidebar for mobile
+   • Adaptive layouts for all screen sizes
+   • Touch-friendly interactions
+
+7. Dark/Light Mode Support
+   • Theme toggle capability
+   • System theme detection
+   • Consistent styling across themes
+
+8. Search Functionality
+   • Global search in navbar
+   • Search state management
+
+--------------------------------------------------------------------------------
+                         KEY CONCEPTS LEARNED
+--------------------------------------------------------------------------------
+
+React Components:
+  • Breaking UI into reusable, composable pieces
+  • Component props and children patterns
+  • Component composition strategies
+  • Building a design system with reusable UI components
+
+State Management:
+  • useState for local component state
+  • useEffect for side effects and data fetching
+  • TanStack Query for server state and caching
+  • React Hook Form for form state management
+
+React Router:
+  • BrowserRouter for SPA navigation
+  • Route configuration and nested routes
+  • Dynamic route parameters
+  • 404 handling with catch-all routes
+
+API Integration:
+  • Simulated API calls with setTimeout
+  • Loading states and error handling
+  • Optimistic UI updates
+  • Data mocking for development
+
+Testing:
+  • Unit tests with Vitest
+  • Component testing with React Testing Library
+  • Test setup and utilities
+
+TypeScript:
+  • Type definitions for interfaces
+  • Generic types for reusable components
+  • Type safety benefits over plain JavaScript
+  • Improved IDE support and refactoring
+
+--------------------------------------------------------------------------------
+                         DEVELOPMENT COMMANDS
+--------------------------------------------------------------------------------
+
+Development:
+  npm run dev          # Start development server
+  npm run build        # Build for production
+  npm run build:dev    # Build in development mode
+
+Testing:
+  npm run test         # Run tests once
+  npm run test:watch   # Run tests in watch mode
+
+Code Quality:
+  npm run lint         # Run ESLint
+  npm run preview      # Preview production build
+
+--------------------------------------------------------------------------------
+                         PROJECT STATISTICS
+--------------------------------------------------------------------------------
+
+• Total Components: 50+
+• Pages: 6 (Feed, Explore, Messages, Notifications, Profile, Not Found)
+• UI Components: 35+
+• Type Definitions: 6 main interfaces
+• Mock Data: 5 users, 5 posts, 7 notifications, 4 conversations
+
+--------------------------------------------------------------------------------
+                         FUTURE ENHANCEMENTS
+--------------------------------------------------------------------------------
+
+Potential improvements for production readiness:
+  • Backend API integration
+  • User authentication
+  • Database for persistent storage
+  • WebSocket for real-time updates
+  • Image upload functionality
+  • Social sharing integration
+  • Performance optimization
+  • PWA capabilities
+
+--------------------------------------------------------------------------------
+                              CONCLUSION
+--------------------------------------------------------------------------------
+
+This project demonstrates proficiency in modern React development practices,
+including component architecture, state management, routing, and responsive
+design. The use of TypeScript throughout the codebase provides enhanced
+type safety and developer productivity, which was a deliberate choice made
+during the learning process to ensure more robust and maintainable code.
+
+The project showcases the ability to build a complete, functional social
+media dashboard with professional-grade UI/UX considerations and follows
+industry best practices for code organization and maintainability.
+
+================================================================================
+                         Document Generated: 2024
+================================================================================
+
